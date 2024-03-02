@@ -25,11 +25,7 @@ class CategoryController extends Controller
     {
         if ($request->ajax()) {
             $data = $request->all();
-            if ($data['status'] == "Active") {
-                $status = 0;
-            } else {
-                $status = 1;
-            }
+             $status = $data['status'] == "Active" ? 0 : 1 ;
 
             Category::where('id', $data['category_id'])->update(['status' => $status]);
 
