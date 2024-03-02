@@ -24,13 +24,8 @@ class BrandController extends Controller
         {
             $data = $request->all();
             
-            if($data['status']=="Active")
-            {
-                $status = 0;
-            }else{
-                $status = 1;
-            }
-
+             $status = $data['status'] == "Active" ? 0 : 1 ;
+            
             Brand::where('id',$data['brand_id'])->update(['status'=>$status]);
 
             return response()->json(['status'=> $status, 'brand_id'=>$data['brand_id']]);
