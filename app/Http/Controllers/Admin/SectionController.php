@@ -25,12 +25,7 @@ class SectionController extends Controller
             // echo "<pre>";
             // print_r($data);
             // die;
-            if($data['status']=="Active")
-            {
-                $status = 0;
-            }else{
-                $status = 1;
-            }
+             $status = $data['status'] == "Active" ? 0 : 1 ;
 
             Section::where('id',$data['section_id'])->update(['status'=>$status]);
 
